@@ -8,7 +8,7 @@ resource "aws_eks_cluster" "eks_cluster" {
   role_arn = aws_iam_role.eks_admin.arn  # Use the new admin IAM role
 
   vpc_config {
-    subnet_id              = var.public_subnet_ids
+    subnet_ids              = var.public_subnet_ids
     endpoint_private_access = true
     endpoint_public_access  = false
     security_group_ids = concat(
