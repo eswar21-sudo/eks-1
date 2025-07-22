@@ -62,7 +62,7 @@ variable "kubernetes_version" {
   default     = "1.32"
 }
 
-variable "master_security_group_id" {
+variable "security_group_id" {
   description = "Master security group ID to join EKS SGs with"
   type        = string
 }
