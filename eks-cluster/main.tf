@@ -13,7 +13,7 @@ resource "aws_eks_cluster" "eks_cluster" {
     endpoint_public_access  = false
     security_group_ids = concat(
       [aws_security_group.eks_sg.id],   # EKS SG
-      [var.master_security_group_id]    # Join with master security group
+      [var.security_group_id]    # Join with master security group
     )
   }
 
@@ -114,7 +114,7 @@ resource "aws_security_group_rule" "eks_to_master_sg" {
   to_port                  = 65535
   protocol                 = "tcp"
   security_group_id        = aws_security_group.eks_sg.id
-  source_security_group_id = var.master_security_group_id
+  source_security_group_id = var.security_group_id
 }
 
 resource "aws_security_group_rule" "master_sg_to_eks" {
@@ -122,6 +122,6 @@ resource "aws_security_group_rule" "master_sg_to_eks" {
   from_port                = 0
   to_port                  = 65535
   protocol                 = "tcp"
-  security_group_id        = var.master_security_group_id
+  security_group_id        = var.security_group_id
   source_security_group_id = aws_security_group.eks_sg.id
 }
