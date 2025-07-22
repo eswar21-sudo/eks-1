@@ -24,5 +24,5 @@ output "eks_security_group_id" {
 # Display the master security group ID
 output "master_security_group_id" {
   description = "Master Security Group ID"
-  value       = var.master_security_group_id
+  value       = var.security_group_id
 }
